@@ -49,7 +49,7 @@ class FirstMovieViewController: UIViewController {
                         
                         DispatchQueue.main.async {
                             self.setMovieInfo(film:moviesInfoArray)
-                            print(moviesData)
+                            //print(moviesData)
                             
                         }
                     

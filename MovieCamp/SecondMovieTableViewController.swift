@@ -48,7 +48,7 @@ class SecondMovieTableViewController: UITableViewController {
            let cell = tableView.dequeueReusableCell(withIdentifier: "movieforcell", for: indexPath) as! MovieListTableViewCell
            let movielist = moviesArray[indexPath.row]
            
-              cell.movieImageView.image = UIImage(named:movielist.poster_path!)
+        cell.movieImageView.image = UIImage(named:("https://image.tmdb.org/t/p/w500/" + movielist.poster_path!))
               cell.titleLabel.text = movielist.title
               cell.releaseDateLabel.text = movielist.release_date
               cell.voteLabel.text = "\(String(describing: movielist.vote_average))"
@@ -87,28 +87,19 @@ class SecondMovieTableViewController: UITableViewController {
                 let task = URLSession.shared.dataTask(with: url) { (data, response , error) in
                     let decoder = JSONDecoder()
                     decoder.dateDecodingStrategy = .iso8601
-                    if let data = data{
+                    
+                    if let data = data , let moviesData = try? JSONDecoder().decode(Film.self, from: data){
+                        self.moviesArray = moviesData.results
                         
-                        do{
-                            let moviesData = try JSONDecoder().decode(Film.self, from: data)
-                            let moviesTitle = moviesData.results[self.index].title
-                            let moviesVote = moviesData.results[self.index].vote_average
-                            let moviesImage = "https://image.tmdb.org/t/p/w500/" + moviesData.results[self.index].poster_path!
-                            let moviesReleaseDate = moviesData.results[self.index].release_date
-                            let moviesInfoArray = MoviesData(title: moviesTitle, vote_average: moviesVote, release_date: moviesReleaseDate, poster_path: moviesImage)
-                            
-                            DispatchQueue.main.async {
-                                self.moviesArray.append(moviesInfoArray)
-                                self.tableView.reloadData()
-                                print(moviesInfoArray)
-                               
-                            }
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                            print(moviesData)
+                           
+                        }
                         
-                        }catch{
-                            
-                        print(error)
                     }
-                }
+                    
+                    
             }
                 
               task.resume()
