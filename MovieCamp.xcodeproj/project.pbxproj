@@ -20,7 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E1B4849823262A2E001DD1B7 /* MovieCamp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieCamp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1B4849823262A2E001DD1B7 /* MovieTop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieTop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1B4849B23262A2E001DD1B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1B4849D23262A2E001DD1B7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E1B4849F23262A2E001DD1B7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,7 +56,7 @@
 		E1B4849923262A2E001DD1B7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E1B4849823262A2E001DD1B7 /* MovieCamp.app */,
+				E1B4849823262A2E001DD1B7 /* MovieTop.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -96,7 +96,7 @@
 			);
 			name = MovieCamp;
 			productName = MovieCamp;
-			productReference = E1B4849823262A2E001DD1B7 /* MovieCamp.app */;
+			productReference = E1B4849823262A2E001DD1B7 /* MovieTop.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -307,8 +307,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "-120.MovieCamp";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "-120.MovieTop";
+				PRODUCT_NAME = MovieTop;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -325,8 +325,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "-120.MovieCamp";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "-120.MovieTop";
+				PRODUCT_NAME = MovieTop;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
