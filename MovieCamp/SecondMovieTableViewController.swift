@@ -10,6 +10,7 @@ import UIKit
 
 class SecondMovieTableViewController: UITableViewController {
 
+    //@IBOutlet var MovieListTableView: UITableView!
     
     var moviesArray = [MoviesData]()
     var index = 0
@@ -21,6 +22,7 @@ class SecondMovieTableViewController: UITableViewController {
         super.viewDidLoad()
         getMoiveInfo()
         
+    
         tableView.contentInset = UIEdgeInsets(top: imageOriginalHeight, left: 0, bottom: 0, right: 0)
 
         // Uncomment the following line to preserve selection between presentations
@@ -97,6 +99,7 @@ class SecondMovieTableViewController: UITableViewController {
                             
                             DispatchQueue.main.async {
                                 self.moviesArray.append(moviesInfoArray)
+                                self.tableView.reloadData()
                                 print(moviesInfoArray)
                                
                             }
@@ -157,6 +160,11 @@ class SecondMovieTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
 
     
     
