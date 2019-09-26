@@ -45,17 +45,29 @@ class SecondMovieTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-           let cell = tableView.dequeueReusableCell(withIdentifier: "movieforcell", for: indexPath) as! MovieListTableViewCell
-           let movielist = moviesArray[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "movieforcell", for: indexPath) as! MovieListTableViewCell
+        let movielist = moviesArray[indexPath.row]
            
-        cell.movieImageView.image = UIImage(named:("https://image.tmdb.org/t/p/w500/" + movielist.poster_path!))
-              cell.titleLabel.text = movielist.title
-              cell.releaseDateLabel.text = movielist.release_date
-              cell.voteLabel.text = "\(String(describing: movielist.vote_average))"
-               
-              
-               // Configure the cell...
-               return cell
+           //cell.movieImageView.image = UIImage(named:("https://image.tmdb.org/t/p/w500/" + movielist.poster_path!))
+        cell.titleLabel.text = movielist.title
+        cell.releaseDateLabel.text = movielist.release_date
+        cell.voteLabel.text = "\(String(describing: movielist.vote_average))"
+        cell.movieImageView.image = nil
+        if let imageAddress = movielist.poster_path{
+            if let imageURL = URL(string: "https://image.tmdb.org/t/p/w500/" + imageAddress){
+            let task = URLSession.shared.dataTask(with: imageURL){(data, response, error ) in
+                if let data = data{
+                    DispatchQueue.main.async {
+                        cell.movieImageView.image = UIImage(data:data)
+                    }
+                }
+            }
+            task.resume()
+            
+          }
+        }
+    
+        return cell
     }
         
     
