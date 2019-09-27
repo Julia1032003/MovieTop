@@ -48,7 +48,7 @@ class SecondMovieTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "movieforcell", for: indexPath) as! MovieListTableViewCell
         let movielist = moviesArray[indexPath.row]
            
-           //cell.movieImageView.image = UIImage(named:("https://image.tmdb.org/t/p/w500/" + movielist.poster_path!))
+        
         cell.titleLabel.text = movielist.title
         cell.releaseDateLabel.text = movielist.release_date
         cell.voteLabel.text = "\(String(describing: movielist.vote_average))"

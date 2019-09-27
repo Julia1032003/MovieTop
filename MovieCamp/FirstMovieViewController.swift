@@ -12,17 +12,19 @@ class FirstMovieViewController: UIViewController {
 
     @IBOutlet var TopMoiveImageView: UIImageView!
     @IBOutlet weak var imageViewHeightConstraint: NSLayoutConstraint!
-    
     //連結圖片高度條件的 outlet imageViewHeightConstraint
-    var index = 0
+    
     var SecondMovieTableController:SecondMovieTableViewController?
+    var timer:Timer?
+    var index = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getMoiveInfo()
-        // Do any additional setup after loading the view.
+        time()
+        //畫面載入後即執行每秒換一張電影海報
     }
     
+    //加入TableView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             
             if segue.identifier == "secondInfo"{
@@ -30,7 +32,21 @@ class FirstMovieViewController: UIViewController {
             }
         }
     
+    //每秒換一張電影海報
+    func time(){
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true){
+            (timer) in self.newImage()
+        }
+    }
     
+    //亂數換海報
+    func newImage(){
+        index = Int.random(in: 0...20)
+        getMoiveInfo()
+    }
+    
+    
+    //取得TMDB Top 20 電影資料
     func getMoiveInfo(){
         let urlStr = "https://api.themoviedb.org/3/discover/movie?api_key=bee04d91e381af841c21674aad134443&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_year=2019.json"
         if let url = URL(string: urlStr) {
@@ -64,6 +80,7 @@ class FirstMovieViewController: UIViewController {
         }
     }
     
+    //顯示電影海報
     func setMovieInfo(film:MoviesInfo){
         if let imageAddress = film.poster_path{
             if let imageURL = URL(string: imageAddress){
@@ -97,11 +114,10 @@ class FirstMovieViewController: UIViewController {
         }
       }
       
-        //SecondMovieTableController?.titleLabel.text = film.title
-        //SecondMovieTableController?.voteLabel.text = "\(String(describing: film.vote_average))"
-        //SecondMovieTableController?.releaseDateLabel.text = film.release_date
     }
-        
+    
+    
+    //提示訊息
     func popAlert() {
             
             let alert = UIAlertController(title: "Something Wrong", message: nil, preferredStyle: .alert)
@@ -109,7 +125,13 @@ class FirstMovieViewController: UIViewController {
             alert.addAction(okAction)
             present(alert, animated: true, completion: nil)
             
-}
+    }
+    
+    //關閉app畫面即停止timer，以防止在背景持續執行
+    override func viewDidDisappear(_ animated: Bool) {
+       timer?.invalidate()
+    }
+    
 
 
     /*
