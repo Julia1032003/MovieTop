@@ -30,6 +30,8 @@ struct Film: Codable {
     var results:[MoviesData]
 }
 
+
+
 //電影相關圖片size
 
 struct ImageInfo: Codable {

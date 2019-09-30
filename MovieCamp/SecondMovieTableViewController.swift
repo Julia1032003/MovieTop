@@ -10,8 +10,6 @@ import UIKit
 
 class SecondMovieTableViewController: UITableViewController {
 
-    //@IBOutlet var MovieListTableView: UITableView!
-    
     var moviesArray = [MoviesData]()
     var index = 0
     
@@ -25,11 +23,7 @@ class SecondMovieTableViewController: UITableViewController {
     
         tableView.contentInset = UIEdgeInsets(top: imageOriginalHeight, left: 0, bottom: 0, right: 0)
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
     }
 
     // MARK: - Table view data source

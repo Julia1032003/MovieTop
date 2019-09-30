@@ -18,10 +18,12 @@ class FirstMovieViewController: UIViewController {
     var timer:Timer?
     var index = 0
     
+    var movies = [MoviesData]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        time()
-        //畫面載入後即執行每秒換一張電影海報
+       
+        getMoiveInfo()
     }
     
     //加入TableView
@@ -32,17 +34,19 @@ class FirstMovieViewController: UIViewController {
             }
         }
     
-    //每秒換一張電影海報
+    //每三秒換一張電影海報
     func time(){
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true){
+        timer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true){
             (timer) in self.newImage()
         }
     }
     
-    //亂數換海報
+    //換海報
     func newImage(){
-        index = Int.random(in: 0...20)
-        getMoiveInfo()
+        index = (index + 1) % movies.count
+        setMovieInfo(film: movies[index])
+        //getMoiveInfo()
+        
     }
     
     
@@ -57,16 +61,17 @@ class FirstMovieViewController: UIViewController {
                     
                     do{
                         let moviesData = try JSONDecoder().decode(Film.self, from: data)
-                        let moviesTitle = moviesData.results[self.index].title
-                        let moviesVote = moviesData.results[self.index].vote_average
-                        let moviesImage = "https://image.tmdb.org/t/p/w500/" + moviesData.results[self.index].poster_path!
-                        let moviesReleaseDate = moviesData.results[self.index].release_date
-                        let moviesInfoArray = MoviesInfo(title: moviesTitle, vote_average: moviesVote, release_date: moviesReleaseDate, poster_path: moviesImage)
+                            
+                        self.movies = moviesData.results
                         
                         DispatchQueue.main.async {
-                            self.setMovieInfo(film:moviesInfoArray)
+                            if  self.movies.count > 0 {
+                                self.setMovieInfo(film:self.movies[self.index])
+                                self.time()
+
+
+                            }
                             //print(moviesData)
-                            
                         }
                     
                     }catch{
@@ -81,9 +86,9 @@ class FirstMovieViewController: UIViewController {
     }
     
     //顯示電影海報
-    func setMovieInfo(film:MoviesInfo){
+    func setMovieInfo(film:MoviesData){
         if let imageAddress = film.poster_path{
-            if let imageURL = URL(string: imageAddress){
+            if let imageURL = URL(string: "https://image.tmdb.org/t/p/w500/" + imageAddress){
                 let task = URLSession.shared.downloadTask(with: imageURL) {
                     (data, response, error) in
                     
