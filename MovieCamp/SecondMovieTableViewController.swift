@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import SafariServices
 
 class SecondMovieTableViewController: UITableViewController {
 
     var moviesArray = [MoviesData]()
+    var trailersArray = [MovieTrailers]()
     var index = 0
+    //var moviesTrailerURL = "http://youtube.com/watch?v=\(MovieTrailers)"
     
     //設定表格的 contentInse，讓表格的上方多出一塊高度 450 points 的空間
     let imageOriginalHeight: CGFloat = 450
@@ -63,6 +66,16 @@ class SecondMovieTableViewController: UITableViewController {
     
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let indexPath = self.tableView.indexPathForSelectedRow{
+            let trailervideo = trailersArray[indexPath.row]
+            let url = URL(string:"http://youtube.com/watch?v=\(trailervideo.key))")!
+            let safariVC = SFSafariViewController(url:url)
+            
+            present(safariVC , animated: true , completion: nil)
+        }
+    }
         
     
     
@@ -99,6 +112,7 @@ class SecondMovieTableViewController: UITableViewController {
                         
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
+                            self.getTrailerKey(film: self.moviesArray[self.index])
                             print(moviesData)
                            
                         }
@@ -111,6 +125,28 @@ class SecondMovieTableViewController: UITableViewController {
               task.resume()
             }
         }
+    
+    func getTrailerKey(film:MoviesData){
+        
+        let urlStr = "https://api.themoviedb.org/3/movie/\(film.id)/videos?api_key=bee04d91e381af841c21674aad134443&language=en-US"
+        if let url = URL(string: urlStr){
+            let task = URLSession.shared.dataTask(with: url){(data, response , error) in
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601
+                
+                if let data = data , let trailerkey = try? JSONDecoder().decode(TrailersInfo.self, from: data){
+                    self.trailersArray = trailerkey.results
+                    
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                        print(trailerkey)
+                    }
+                    
+                }
+            }
+            task.resume()
+        }
+    }
         
        
     /*

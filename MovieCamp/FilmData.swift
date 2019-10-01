@@ -23,6 +23,16 @@ struct Film: Codable {
     var results:[MoviesData]
 }
 
+//預告片
+struct MovieTrailers: Codable{
+    var key: String?
+    var name: String?
+}
+
+struct TrailersInfo: Codable {
+    var results:[MovieTrailers]
+}
+
 
 /*struct MoviesInfo: Codable {
     var title: String?
