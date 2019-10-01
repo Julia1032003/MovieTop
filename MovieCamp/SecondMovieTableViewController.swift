@@ -45,7 +45,7 @@ class SecondMovieTableViewController: UITableViewController {
         
         cell.titleLabel.text = movielist.title
         cell.releaseDateLabel.text = movielist.release_date
-        cell.voteLabel.text = "\(String(describing: movielist.vote_average))"
+        cell.voteLabel.text = movielist.vote_average?.description //"\(String(describing: movielist.vote_average))"
         cell.movieImageView.image = nil
         if let imageAddress = movielist.poster_path{
             if let imageURL = URL(string: "https://image.tmdb.org/t/p/w500/" + imageAddress){

@@ -8,14 +8,6 @@
 
 import Foundation
 
-//存電影資料
-struct MoviesInfo: Codable {
-    var title: String?
-    var vote_average: Double?
-    var release_date: String?
-    var poster_path: String?
-    
-}
 
 //取得電影資料
 struct MoviesData: Codable {
@@ -23,6 +15,7 @@ struct MoviesData: Codable {
     var vote_average: Double?
     var release_date: String?
     var poster_path: String?
+    var id: Int?
     
 }
 
@@ -31,6 +24,13 @@ struct Film: Codable {
 }
 
 
+/*struct MoviesInfo: Codable {
+    var title: String?
+    var vote_average: Double?
+    var release_date: String?
+    var poster_path: String?
+    
+}
 
 //電影相關圖片size
 
@@ -42,7 +42,7 @@ struct ImageInfo: Codable {
 struct ImageSize: Codable{
     var w500:String
     var original:String
-}
+}*/
 
 
 
