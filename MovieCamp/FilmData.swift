@@ -15,7 +15,7 @@ struct MoviesData: Codable {
     var vote_average: Double?
     var release_date: String?
     var poster_path: String?
-    var id: Int?
+    var id: Int
     
 }
 

@@ -70,7 +70,7 @@ class SecondMovieTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let indexPath = self.tableView.indexPathForSelectedRow{
             let trailervideo = trailersArray[indexPath.row]
-            let url = URL(string:"http://youtube.com/watch?v=\(trailervideo.key))")!
+            let url = URL(string:"http://youtube.com/watch?v=\(trailervideo.key!))")!
             let safariVC = SFSafariViewController(url:url)
             
             present(safariVC , animated: true , completion: nil)
