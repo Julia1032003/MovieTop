@@ -17,6 +17,7 @@
 		E1B484B223264193001DD1B7 /* SecondMovieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B484B123264193001DD1B7 /* SecondMovieTableViewController.swift */; };
 		E1B484B423265363001DD1B7 /* FilmData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B484B323265363001DD1B7 /* FilmData.swift */; };
 		E1D1D62D233C7DBF008B8B9A /* MovieListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D1D62C233C7DBF008B8B9A /* MovieListTableViewCell.swift */; };
+		E1EF1CEB2344A49300608B96 /* SafariViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EF1CEA2344A49300608B96 /* SafariViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		E1B484B123264193001DD1B7 /* SecondMovieTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondMovieTableViewController.swift; sourceTree = "<group>"; };
 		E1B484B323265363001DD1B7 /* FilmData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmData.swift; sourceTree = "<group>"; };
 		E1D1D62C233C7DBF008B8B9A /* MovieListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListTableViewCell.swift; sourceTree = "<group>"; };
+		E1EF1CEA2344A49300608B96 /* SafariViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				E1B4849B23262A2E001DD1B7 /* AppDelegate.swift */,
 				E1B4849D23262A2E001DD1B7 /* SceneDelegate.swift */,
 				E1B4849F23262A2E001DD1B7 /* ViewController.swift */,
+				E1EF1CEA2344A49300608B96 /* SafariViewController.swift */,
 				E1B484A123262A2E001DD1B7 /* Main.storyboard */,
 				E1D1D62C233C7DBF008B8B9A /* MovieListTableViewCell.swift */,
 				E1B484B323265363001DD1B7 /* FilmData.swift */,
@@ -152,6 +155,7 @@
 			files = (
 				E1B484B02326415B001DD1B7 /* FirstMovieViewController.swift in Sources */,
 				E1B484A023262A2E001DD1B7 /* ViewController.swift in Sources */,
+				E1EF1CEB2344A49300608B96 /* SafariViewController.swift in Sources */,
 				E1B484B223264193001DD1B7 /* SecondMovieTableViewController.swift in Sources */,
 				E1D1D62D233C7DBF008B8B9A /* MovieListTableViewCell.swift in Sources */,
 				E1B4849C23262A2E001DD1B7 /* AppDelegate.swift in Sources */,

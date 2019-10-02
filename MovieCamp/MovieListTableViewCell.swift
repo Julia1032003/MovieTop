@@ -15,8 +15,7 @@ class MovieListTableViewCell: UITableViewCell {
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var voteLabel: UILabel!
     
-
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -27,5 +26,7 @@ class MovieListTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    
+   
 }

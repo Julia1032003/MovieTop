@@ -109,6 +109,7 @@
                                     <outlet property="releaseDateLabel" destination="71M-NA-Kbi" id="fO8-Km-9BL"/>
                                     <outlet property="titleLabel" destination="1sh-a1-6n3" id="3Yh-Vf-1I7"/>
                                     <outlet property="voteLabel" destination="I00-j9-Rqg" id="U0x-j8-vJZ"/>
+                                    <segue destination="VqA-N4-EzQ" kind="show" identifier="showSafari" id="VXf-vN-sap"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -118,6 +119,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KXP-6b-Xzn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1884.057971014493" y="109.82142857142857"/>
+        </scene>
+        <!--Safari View Controller-->
+        <scene sceneID="xU4-oy-wbv">
+            <objects>
+                <viewController id="VqA-N4-EzQ" customClass="SFSafariViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gQR-sl-sai">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="754"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="ZJ6-ST-iE8"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="5Y0-Gp-3HQ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KeT-9u-prq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2686" y="110"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dmC-yQ-IuT">

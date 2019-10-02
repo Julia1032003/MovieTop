@@ -30,17 +30,20 @@ class SecondMovieTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
+     
+    //有幾個sections?回傳一個
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
+    //有幾個cell?回傳array數量的cell
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return moviesArray.count
     }
     
+    //在第幾個cell？
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "movieforcell", for: indexPath) as! MovieListTableViewCell
         let movielist = moviesArray[indexPath.row]
@@ -68,6 +71,25 @@ class SecondMovieTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showSafari", sender: indexPath)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controller = segue.destination as? SafariViewController , let row = self.tableView.indexPathForSelectedRow?.row{
+            let moviesList = moviesArray[row]
+            controller.moviesArray = moviesList
+        }
+    }
+    
+    /*override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let indexPath = self.tableView.indexPathForSelectedRow{
+            let moviestlist = moviesArray[indexPath.row]
+            present(MovieListTableViewCell, animated: true, completion: nil)
+        }
+    }*/
+    
+    
+    /*override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let indexPath = self.tableView.indexPathForSelectedRow{
             let trailervideo = trailersArray[indexPath.row]
             let url = URL(string:"http://youtube.com/watch?v=\(trailervideo.key!))")!
@@ -75,7 +97,7 @@ class SecondMovieTableViewController: UITableViewController {
             
             present(safariVC , animated: true , completion: nil)
         }
-    }
+    }*/
         
     
     
@@ -112,7 +134,7 @@ class SecondMovieTableViewController: UITableViewController {
                         
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
-                            self.getTrailerKey(film: self.moviesArray[self.index])
+                            //self.getTrailerKey(film: self.moviesArray[self.index])
                             print(moviesData)
                            
                         }
@@ -126,7 +148,7 @@ class SecondMovieTableViewController: UITableViewController {
             }
         }
     
-    func getTrailerKey(film:MoviesData){
+    /*func getTrailerKey(film:MoviesData){
         
         let urlStr = "https://api.themoviedb.org/3/movie/\(film.id)/videos?api_key=bee04d91e381af841c21674aad134443&language=en-US"
         if let url = URL(string: urlStr){
@@ -146,7 +168,7 @@ class SecondMovieTableViewController: UITableViewController {
             }
             task.resume()
         }
-    }
+    }*/
         
        
     /*
