@@ -55,8 +55,8 @@ class DetilViewController: UIViewController {
     
     
     @IBAction func playTrailer(_ sender: Any) {
-        let trailerkey = trailersArray.self
-        let url = URL(string:"http://youtube.com/watch?v=\(trailerkey))")!
+      
+        let url = URL(string:"http://youtube.com/watch?v=\(trailersArray[0].key!))")!
         let safariVC = SFSafariViewController(url:url)
         
         present(safariVC , animated: true , completion: nil)
@@ -66,7 +66,7 @@ class DetilViewController: UIViewController {
     
     func getTrailerKey(){
         
-        let urlStr = "https://api.themoviedb.org/3/movie/\(moviesArray?.id)/videos?api_key=bee04d91e381af841c21674aad134443&language=en-US"
+        let urlStr = "https://api.themoviedb.org/3/movie/\(moviesArray!.id)/videos?api_key=bee04d91e381af841c21674aad134443&language=en-US"
         if let url = URL(string: urlStr){
             let task = URLSession.shared.dataTask(with: url){(data, response , error) in
                 let decoder = JSONDecoder()
