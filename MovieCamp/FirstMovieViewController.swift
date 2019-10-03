@@ -71,7 +71,7 @@ class FirstMovieViewController: UIViewController {
 
 
                             }
-                            print(moviesData)
+                            //print(moviesData)
                         }
                     
                     }catch{

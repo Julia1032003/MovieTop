@@ -12,7 +12,6 @@ import SafariServices
 class SecondMovieTableViewController: UITableViewController {
 
     var moviesArray = [MoviesData]()
-    var trailersArray = [MovieTrailers]()
     var index = 0
     //var moviesTrailerURL = "http://youtube.com/watch?v=\(MovieTrailers)"
     
@@ -70,23 +69,13 @@ class SecondMovieTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showSafari", sender: indexPath)
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let controller = segue.destination as? SafariViewController , let row = self.tableView.indexPathForSelectedRow?.row{
+        if let controller = segue.destination as? DetilViewController , let row = self.tableView.indexPathForSelectedRow?.row{
             let moviesList = moviesArray[row]
             controller.moviesArray = moviesList
         }
     }
-    
-    /*override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let indexPath = self.tableView.indexPathForSelectedRow{
-            let moviestlist = moviesArray[indexPath.row]
-            present(MovieListTableViewCell, animated: true, completion: nil)
-        }
-    }*/
     
     
     /*override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -134,8 +123,6 @@ class SecondMovieTableViewController: UITableViewController {
                         
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
-                            //self.getTrailerKey(film: self.moviesArray[self.index])
-                            print(moviesData)
                            
                         }
                         
