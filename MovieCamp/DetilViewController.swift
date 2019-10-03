@@ -32,7 +32,7 @@ class DetilViewController: UIViewController {
     func getid(){
         print(moviesArray?.id as Any)
     }
-    
+    //載入電影海報、電影名稱、電影簡介
     func getSelectInfo(){
         movieTitleLabel.text = moviesArray?.title
         overViewLabel.text = moviesArray?.overview

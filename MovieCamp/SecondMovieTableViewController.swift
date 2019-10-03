@@ -69,7 +69,7 @@ class SecondMovieTableViewController: UITableViewController {
         return cell
     }
     
-    
+    //利用prepare將資料傳到下一頁
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let controller = segue.destination as? DetilViewController , let row = self.tableView.indexPathForSelectedRow?.row{
             let moviesList = moviesArray[row]
@@ -134,28 +134,7 @@ class SecondMovieTableViewController: UITableViewController {
               task.resume()
             }
         }
-    
-    /*func getTrailerKey(film:MoviesData){
-        
-        let urlStr = "https://api.themoviedb.org/3/movie/\(film.id)/videos?api_key=bee04d91e381af841c21674aad134443&language=en-US"
-        if let url = URL(string: urlStr){
-            let task = URLSession.shared.dataTask(with: url){(data, response , error) in
-                let decoder = JSONDecoder()
-                decoder.dateDecodingStrategy = .iso8601
-                
-                if let data = data , let trailerkey = try? JSONDecoder().decode(TrailersInfo.self, from: data){
-                    self.trailersArray = trailerkey.results
-                    
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                        print(trailerkey)
-                    }
-                    
-                }
-            }
-            task.resume()
-        }
-    }*/
+   
         
        
     /*
