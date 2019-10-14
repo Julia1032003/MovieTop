@@ -12,9 +12,6 @@ import SafariServices
 class SecondMovieTableViewController: UITableViewController {
 
     var moviesArray = [MoviesData]()
-    var index = 0
-    //var moviesTrailerURL = "http://youtube.com/watch?v=\(MovieTrailers)"
-    
     //設定表格的 contentInse，讓表格的上方多出一塊高度 450 points 的空間
     let imageOriginalHeight: CGFloat = 450
     

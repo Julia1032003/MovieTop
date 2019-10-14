@@ -14,9 +14,13 @@ class LoveListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        getList()
+    }
+    
+    func  getList() {
         if let lovelist = LoveMoviesList.readLoveList(){
             self.lovelist = lovelist
+            self.tableView.reloadData()
             print(lovelist)
         }
         

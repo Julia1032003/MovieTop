@@ -20,7 +20,7 @@ class DetilViewController: UIViewController {
     var moviesArray:MoviesData?
     var trailersArray = [MovieTrailers]()
     var moviesWatchList:MoviesWatchList?
-    var loveMoviesList:LoveMoviesList?
+    var loveMoviesList = [LoveMoviesList]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,7 +94,20 @@ class DetilViewController: UIViewController {
     //儲存電影至最愛清單
     @IBAction func saveToLoveList(_ sender: Any) {
         
-        if moviesArray!.id == self.loveMoviesList?.id{
+        let movieTitle = movieTitleLabel.text ?? ""
+        let movieOverView = overViewLabel.text ?? ""
+        let movievote = voteLabel.text ?? ""
+        let movieID = moviesArray!.id
+        let movieReleaseDate = moviesArray!.release_date
+        let movieImage = "https://image.tmdb.org/t/p/w500\(moviesArray!.poster_path!)"
+        let trailerurl = "http://youtube.com/watch?v=\(trailersArray[0].key!))"
+        
+        loveMoviesList = [LoveMoviesList(title: movieTitle, vote_average: movievote, release_date: movieReleaseDate, poster_path: movieImage, id: movieID, overview: movieOverView, trailerurl: trailerurl)]
+        
+        LoveMoviesList.saveToLoveList(lovelist: loveMoviesList)
+        
+        
+        /*if moviesArray!.id == self.loveMoviesList.id{
             return showAlertMessage(title: "Oops!", message: "The movie have been add to your list.")
         }else{
             
@@ -106,16 +119,16 @@ class DetilViewController: UIViewController {
             let movieImage = "https://image.tmdb.org/t/p/w500\(moviesArray!.poster_path!)"
             let trailerurl = "http://youtube.com/watch?v=\(trailersArray[0].key!))"
             
-            loveMoviesList = LoveMoviesList(title: movieTitle, vote_average: movievote, release_date: movieReleaseDate, poster_path: movieImage, id: movieID, overview: movieOverView, trailerurl: trailerurl)
+            loveMoviesList = [LoveMoviesList(title: movieTitle, vote_average: movievote, release_date: movieReleaseDate, poster_path: movieImage, id: movieID, overview: movieOverView, trailerurl: trailerurl)]
             
-            if moviesArray!.id == self.loveMoviesList?.id {
-                LoveMoviesList.saveToLoveList(lovelist: [loveMoviesList!])
+            if moviesArray!.id == self.loveMoviesList.id {
+                LoveMoviesList.saveToLoveList(lovelist: loveMoviesList)
                 return showAlertMessage(title: "success!", message: "Please refer to the watch list")
             }else{
                 return showAlertMessage(title: "fail!", message: "something wrong")
             }
 
-        }
+        }*/
     }
     
     
