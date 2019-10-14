@@ -44,20 +44,20 @@ struct LoveMoviesList: Codable {
     var overview: String?
     var trailerurl: String?
     
-    static let  documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-    
+
     static func saveToLoveList(lovelist:[LoveMoviesList]){
         let propertyEncoder = PropertyListEncoder()
         if let data = try? propertyEncoder.encode(lovelist){
-            let url = documentsDirectory.appendingPathComponent("LoveList")
-            try? data.write(to: url)
+            
+            UserDefaults.standard.set(data, forKey: "loveList")
+            
         }
     }
     
     static func readLoveList() -> [LoveMoviesList]? {
+        let userDefaults = UserDefaults.standard
         let propertyDecoder = PropertyListDecoder()
-        let url = documentsDirectory.appendingPathComponent("LoveList")
-        if let data = try? Data(contentsOf: url), let lovelist = try? propertyDecoder.decode([LoveMoviesList].self, from: data){
+        if let data = userDefaults.data(forKey: "loveList") , let lovelist = try? propertyDecoder.decode([LoveMoviesList].self, from: data){
             return lovelist
         }else{
             return nil
