@@ -76,17 +76,7 @@ class SecondMovieTableViewController: UITableViewController {
             controller.moviesArray = moviesList
         }
     }
-    
-    
-    /*override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let indexPath = self.tableView.indexPathForSelectedRow{
-            let trailervideo = trailersArray[indexPath.row]
-            let url = URL(string:"http://youtube.com/watch?v=\(trailervideo.key!))")!
-            let safariVC = SFSafariViewController(url:url)
-            
-            present(safariVC , animated: true , completion: nil)
-        }
-    }*/
+
         
     
     
@@ -111,6 +101,7 @@ class SecondMovieTableViewController: UITableViewController {
             }
         }
     
+    //取得TMDB電影資料
     func getMoiveInfo(){
             let urlStr = "https://api.themoviedb.org/3/discover/movie?api_key=bee04d91e381af841c21674aad134443&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_year=2019.json"
             if let url = URL(string: urlStr) {
