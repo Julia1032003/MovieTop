@@ -14,11 +14,28 @@ class LoveListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let loveList = UserDefaults.standard.array(forKey: "LoveList") as? [[String:Any]]{
+            var lovelist = [LoveMoviesList]()
+            for loveMovie in loveList{
+                let title = loveMovie["title"] as? String ?? ""
+                let vote_average = loveMovie["vote_average"] as? String ?? ""
+                let release_date = loveMovie["release_date"] as? String ?? ""
+                let poster_path = loveMovie["poster_path"] as? String ?? ""
+                let id = loveMovie["id"] as? String ?? ""
+                let overview = loveMovie["overview"] as? String ?? ""
+                let trailerurl = loveMovie["trailerurl"] as? String ?? ""
+                lovelist.append(LoveMoviesList(title: title, vote_average: vote_average, release_date: release_date, poster_path: poster_path, id: Int(id) ?? 0 , overview: overview, trailerurl: trailerurl))
+                print(lovelist)
+                
+            }
+            
+        }
     
-        if let lovelist = LoveMoviesList.readLoveList(){
+        /*if let lovelist = LoveMoviesList.readLoveList(){
             self.lovelist = lovelist
             print(lovelist)
-        }
+        }*/
         
     }
     

@@ -106,17 +106,16 @@ class DetilViewController: UIViewController {
             let movieImage = "https://image.tmdb.org/t/p/w500\(moviesArray!.poster_path!)"
             let trailerurl = "http://youtube.com/watch?v=\(trailersArray[0].key!))"
             
-            loveMoviesList = LoveMoviesList(title: movieTitle, vote_average: movievote, release_date: movieReleaseDate, poster_path: movieImage, id: movieID, overview: movieOverView, trailerurl: trailerurl)
-            
-            saveToLoveList(loveMoviesList as Any)
-            
-            if loveMoviesList != nil{
-    
-                print(loveMoviesList!)
-                return showAlertMessage(title: "success!", message: "Please refer to the watch list")
-            }else{
-                return showAlertMessage(title: "fail!", message: "something wrong")
+            let loveMoviesList = [LoveMoviesList(title: movieTitle, vote_average: movievote, release_date: movieReleaseDate, poster_path: movieImage, id: movieID, overview: movieOverView, trailerurl: trailerurl)]
+            //LoveMoviesList.saveToLoveList(lovelist: [loveMoviesList])
+            var loveMovies = [[String:Any]] ()
+            for loveMoviesList in loveMoviesList {
+                loveMovies.append(["title" : loveMoviesList.title!, "vote_average": loveMoviesList.vote_average!, "release_date": loveMoviesList.release_date!, "poster_path": loveMoviesList.poster_path!, "id": loveMoviesList.id, "overview": loveMoviesList.overview!, "trailerurl": loveMoviesList.trailerurl!])
             }
+            UserDefaults.standard.set(loveMovies, forKey: "LoveList")
+            print(loveMovies)
+            
+
         }
     }
     
